@@ -14,7 +14,6 @@ export enum Color {
 const colorsMap: { [key in Color]: string } = {
   [Color.Blue100]: "#EBF8FF",
   [Color.Blue200]: "#BEE3F8",
-  [Color.Blue200]: "#BEE3F8",
   [Color.Blue400]: "#63B3ED",
   [Color.Blue600]: "#3182CE",
   [Color.Blue800]: "#2C5282",
@@ -25,4 +24,15 @@ const colorsMap: { [key in Color]: string } = {
   [Color.Yellow400]: "#F6E05E",
 }
 
+const clamp = (min: number, max: number) => (n: number) =>
+  Math.min(max, Math.max(min, n))
+
 export const getColor = (color: Color) => colorsMap[color]
+
+export const transparentize = (opacity = 0) => (color: Color) => {
+  const opacity_ = clamp(0, 255)(Math.floor((opacity / 100) * 255))
+  return `${getColor(color)}${opacity_
+    .toString(16)
+    .toUpperCase()
+    .padStart(2, "0")}`
+}

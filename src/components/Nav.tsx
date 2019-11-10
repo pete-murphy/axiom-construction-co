@@ -48,7 +48,11 @@ export const Nav = () => {
               </Link>
             </li>
           ))}
-          <li className="phone">📞 (999) 999-9999</li>
+          <li className="phone">
+            <address>
+              <a href="tel:+9999999999">📞 (999) 999-9999</a>
+            </address>
+          </li>
         </ul>
       </Nav_>
     </>
@@ -113,7 +117,7 @@ const Nav_ = styled.nav<{ isOpen: boolean }>`
     grid-column: 2 / -1;
     justify-content: flex-end;
     ul {
-      gap: 2rem;
+      gap: 2rem; /* A little extra breathing room in horizontal layout */
       grid-auto-flow: column;
       .phone {
         display: initial;

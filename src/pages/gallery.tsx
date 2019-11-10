@@ -5,9 +5,10 @@ import { SEO } from "components/SEO"
 
 export default () => (
   <Layout>
-    <SEO title="Contact" />
+    <SEO title="Gallery" />
     <section className="container">
-      <h1>Contact</h1>
+      <h1>Gallery</h1>
+      <p>Coming soon!</p>
     </section>
   </Layout>
 )

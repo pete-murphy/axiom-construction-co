@@ -1,7 +1,7 @@
 import { Link } from "gatsby"
 import React, { FC } from "react"
 import { css } from "styled-components"
-import { getColor, Color } from "lib/colors"
+import { getColor, Color, transparentize } from "lib/colors"
 
 import { Logo } from "components/Logo"
 import { Nav } from "components/Nav"
@@ -20,12 +20,9 @@ export const Header: FC<Props> = ({ siteTitle }) => (
 
       width: 100%;
       padding: 1rem 2rem 0.5rem;
-      position: sticky;
-      top: 0;
       background: ${getColor(Color.Background)};
       z-index: 2;
-      box-shadow: 0 0 4rem ${getColor(Color.Gray200)};
-
+      box-shadow: 0 0 4rem ${transparentize(10)(Color.Gray900)};
       display: grid;
       grid-template-columns: max-content 1fr;
       grid-template-rows: auto 1fr;
