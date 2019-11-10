@@ -19,7 +19,7 @@ export const Header: FC<Props> = ({ siteTitle }) => (
       } */
 
       width: 100%;
-      padding: 1rem 1rem;
+      padding: 1rem 2rem 0.5rem;
       position: sticky;
       top: 0;
       background: ${getColor(Color.Background)};
@@ -29,12 +29,14 @@ export const Header: FC<Props> = ({ siteTitle }) => (
       display: grid;
       grid-template-columns: max-content 1fr;
       grid-template-rows: auto 1fr;
+      gap: 1rem;
 
       h1 {
         svg {
+          grid-row-start: 1;
           display: block;
-          height: 6rem;
-          fill: ${getColor(Color.Primary800)};
+          height: 4rem;
+          fill: ${getColor(Color.Blue800)};
         }
       }
     `}
