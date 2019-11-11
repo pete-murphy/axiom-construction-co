@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import styled, { css } from "styled-components"
 import { getBreakpoint, Breakpoint } from "lib/layout"
 import { Color, getColor } from "lib/colors"
+import { Phone } from "./icons/Phone"
 
 export const routes = [
   {
@@ -22,6 +23,11 @@ export const routes = [
     title: "Contact",
   },
 ]
+
+export const phoneNumber = {
+  href: "tel:+5082470070",
+  pretty: "(508) 247-0070",
+}
 
 export const Nav = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -52,7 +58,9 @@ export const Nav = () => {
           ))}
           <li className="phone">
             <address>
-              <a href="tel:+9999999999">📞 (999) 999-9999</a>
+              <a href={phoneNumber.href}>
+                <Phone size={16} /> {phoneNumber.pretty}
+              </a>
             </address>
           </li>
         </ul>
@@ -80,7 +88,7 @@ const Nav_ = styled.nav<{ isOpen: boolean }>`
     display: grid;
     text-align: right;
 
-    font-size: 1rem;
+    font-size: 1.2rem;
     grid-auto-flow: row;
     gap: 1rem;
     align-items: flex-end;

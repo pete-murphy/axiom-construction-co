@@ -1,6 +1,7 @@
 import React, { useState, ChangeEventHandler, FormEventHandler } from "react"
 import styled, { css } from "styled-components"
 import { getColor, Color } from "lib/colors"
+import { navigate } from "gatsby"
 
 export const ContactForm = () => {
   const [email, handleChangeEmail] = useFormInput("")
@@ -9,15 +10,29 @@ export const ContactForm = () => {
   const [state, handleChangeState] = useFormInput("")
   const [description, handleChangeDescription] = useFormInput("")
 
-  // const onSubmit: FormEventHandler = e => {
-  //   console.log({
-  //     email,
-  //     name,
-  //     town,
-  //     state,
-  //     description,
-  //   })
-  // }
+  const isValid = [name, email, town, state].every(field => field.length > 0)
+
+  const handleSubmit: FormEventHandler = e => {
+    e.preventDefault()
+    fetch("https://formkeep.com/f/935e631a917e", {
+      method: "post",
+      body: JSON.stringify({
+        name,
+        email,
+        town,
+        state,
+        description,
+      }),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      .then(res => res.ok && res.json())
+      .then(_ => {
+        navigate("/success")
+      })
+  }
   return (
     <form
       css={css`
@@ -27,10 +42,9 @@ export const ContactForm = () => {
         margin-bottom: 1rem;
       `}
       name="contact"
-      method="post"
-      action="/success"
-      data-netlify="true"
-      data-netlify-honeypot="bot-field"
+      // data-netlify="true"
+      // data-netlify-honeypot="bot-field"
+      onSubmit={handleSubmit}
     >
       <input type="hidden" name="bot-field" />
       <input type="hidden" name="form-name" value="contact" />
@@ -87,9 +101,11 @@ export const ContactForm = () => {
       >
         <button
           css={css`
-            padding: 0.5rem 1rem;
+            padding: 1rem 2rem;
+            font-weight: 600;
             background: ${getColor(Color.Yellow400)};
           `}
+          disabled={!isValid}
         >
           Submit
         </button>

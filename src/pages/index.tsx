@@ -1,4 +1,4 @@
-import React from "react"
+import React, { FC } from "react"
 import { Link } from "gatsby"
 
 import { Layout } from "components/Layout"
@@ -6,6 +6,8 @@ import { SEO } from "components/SEO"
 import styled, { css } from "styled-components"
 import { Hero } from "components/Hero"
 import { getColor, Color } from "lib/colors"
+import { Mail } from "components/icons/Mail"
+import { phoneNumber } from "components/Nav"
 
 export default () => (
   <Layout>
@@ -131,14 +133,64 @@ export default () => (
                 }
               }
             `}
-            href="tel:+9999999999"
+            href={phoneNumber.href}
           >
-            (999) 999-9999
+            {phoneNumber.pretty}
           </a>
           .
         </strong>
       </p>
     </section>
+    <div
+      css={css`
+        background: ${getColor(Color.Blue800)};
+        color: white;
+        margin: 4rem 0 0;
+        padding: 2rem 0;
+      `}
+    >
+      <section
+        className="container"
+        css={css`
+          display: grid;
+          gap: 2rem;
+        `}
+      >
+        <h2>What our customers say about us</h2>
+        <Testimonial>
+          <QuoteNameCard name="Bill F." town="Orleans, MA"></QuoteNameCard>
+          <p>
+            Tim was very responsive. I wish all contractors could work as well.
+          </p>
+        </Testimonial>
+        <Testimonial>
+          <QuoteNameCard name="Jeanne M." town="Truro, MA"></QuoteNameCard>
+          <p>
+            We are exceedingly happy with our installation. They are always
+            responsive to our calls and have immediately trouble shooted several
+            minor issue which they then corrected at no cost. I recommended them
+            to my son!
+          </p>
+        </Testimonial>
+        <Testimonial>
+          <QuoteNameCard name="Charles C." town="Quincy, MA"></QuoteNameCard>
+          <p>
+            I just want to again thank you for your fantastic service. Tim
+            explained all of the costs and incentives and most importantly
+            handled all of the paperwork and permits which would have been a
+            complete roadblock for a novice like myself.
+          </p>
+        </Testimonial>
+        <Testimonial>
+          <QuoteNameCard name="Paul S." town="Eastham, MA"></QuoteNameCard>
+          <p>
+            The pricing was very competitive with bids we got from other
+            vendors. We're happy to have been able to work with a firm that is
+            local to the house, without having to pay additional to get it.
+          </p>
+        </Testimonial>
+      </section>
+    </div>
   </Layout>
 )
 
@@ -154,3 +206,38 @@ const CTALink = styled(Link)`
   font-size: 1.2rem;
   font-weight: 600;
 `
+
+const Testimonial = styled.article`
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  /* outline: 1px solid red;
+  * {
+    outline: 3px dashed yellow;
+  } */
+`
+
+type QuoteNameCardProps = {
+  name: string
+  town: string
+}
+
+const QuoteNameCard: FC<QuoteNameCardProps> = props => (
+  <div
+    css={css`
+      display: flex;
+      flex-direction: column;
+      color: ${getColor(Color.Blue400)};
+    `}
+  >
+    <Mail />
+    <div
+      css={css`
+        margin-top: 0.5rem;
+        font-weight: 800;
+      `}
+    >
+      {props.name}
+    </div>
+    <div>{props.town}</div>
+  </div>
+)
