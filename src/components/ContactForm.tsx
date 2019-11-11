@@ -28,9 +28,11 @@ export const ContactForm = () => {
       `}
       name="contact"
       method="post"
+      action="/"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
     >
+      <input type="hidden" name="bot-field" />
       <Label>
         Name
         <input
