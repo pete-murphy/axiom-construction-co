@@ -32,6 +32,9 @@ export const ContactForm = () => {
       .then(_ => {
         navigate("/success")
       })
+      .catch(_ => {
+        navigate("/error")
+      })
   }
   return (
     <form
