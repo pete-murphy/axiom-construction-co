@@ -25,7 +25,7 @@ export const routes = [
 ]
 
 export const phoneNumber = {
-  href: "tel:+5082470070",
+  href: "tel:1-508-247-0070",
   pretty: "(508) 247-0070",
 }
 
