@@ -28,7 +28,7 @@ export const ContactForm = () => {
       `}
       name="contact"
       method="post"
-      action="/"
+      action="/success"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
     >
@@ -111,9 +111,6 @@ const useFormInput = (
 
 const Label = styled.label<{ span?: number }>`
   display: grid;
-  grid: inherit;
-  grid-gap: inherit;
-  grid-template-columns: subgrid;
   grid-column: span ${p => p.span || 4};
   align-items: center;
   input,

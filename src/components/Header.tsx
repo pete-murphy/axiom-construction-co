@@ -19,7 +19,7 @@ export const Header: FC<Props> = ({ siteTitle }) => (
       } */
 
       width: 100%;
-      padding: 1rem 2rem 0.5rem;
+      padding: 1rem 1rem 0.5rem;
       background: ${getColor(Color.Background)};
       z-index: 2;
       box-shadow: 0 0 4rem ${transparentize(10)(Color.Gray900)};

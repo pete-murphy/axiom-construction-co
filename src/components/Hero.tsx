@@ -63,11 +63,12 @@ export const Hero: FC<Props> = props => {
         css={css`
           display: flex;
           height: 100%;
-          align-items: center;
+          align-content: center;
           flex-wrap: wrap;
           color: ${getColor(Color.Blue200)};
           font-size: 2rem;
           ${getBreakpoint(Breakpoint.Min600)} {
+            align-items: center;
             justify-content: center;
           }
         `}
@@ -77,7 +78,7 @@ export const Hero: FC<Props> = props => {
             margin-right: 0.4ch;
           `}
         >
-          Specializing in{" "}
+          Specializing in
         </span>
         <ul
           css={css`

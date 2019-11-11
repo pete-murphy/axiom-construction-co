@@ -24,7 +24,7 @@ export const routes = [
 ]
 
 export const Nav = () => {
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(false)
   const toggleIsOpen = () => setIsOpen(s => !s)
   return (
     <>
@@ -37,7 +37,9 @@ export const Nav = () => {
           }
         `}
       >
-        <Button onClick={toggleIsOpen}>{isOpen ? <>&times;</> : "="}</Button>
+        <Button onClick={toggleIsOpen}>
+          {isOpen ? <>&times;</> : <>&equiv;</>}
+        </Button>
       </div>
       <Nav_ isOpen={isOpen}>
         <ul>
@@ -62,6 +64,7 @@ export const Nav = () => {
 const Button = styled.button`
   font-size: 2rem;
   background: none;
+  padding: 0rem 1rem;
   border: none;
   &:focus {
     outline: none;
@@ -70,7 +73,7 @@ const Button = styled.button`
 
 const Nav_ = styled.nav<{ isOpen: boolean }>`
   display: ${p => (p.isOpen ? `flex` : `none`)};
-  padding: 1rem 0;
+  padding: 1rem 1rem;
   flex-direction: column;
   align-items: flex-end;
   ul {
