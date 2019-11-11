@@ -7,7 +7,7 @@ export default () => (
   <Layout>
     <SEO title="About" />
     <section className="container">
-      <h1>About</h1>
+      <h2>About</h2>
       <p>Coming soon!</p>
     </section>
   </Layout>

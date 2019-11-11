@@ -5,7 +5,7 @@ import { Layout } from "components/Layout"
 import { SEO } from "components/SEO"
 import styled, { css } from "styled-components"
 import { Hero } from "components/Hero"
-import { getColor, Color, transparentize } from "lib/colors"
+import { getColor, Color } from "lib/colors"
 
 export default () => (
   <Layout>
@@ -36,7 +36,7 @@ export default () => (
           justify-content: center;
         `}
       >
-        <CTALink href="/#contact-form">Get a quote →</CTALink>
+        <CTALink to="/contact">Get a quote →</CTALink>
       </div>
     </div>
     <section
@@ -81,13 +81,38 @@ export default () => (
       <p>
         Axiom Construction Company currently operates in Massachusetts, New
         Hampshire and Maine. If you are building or remodeling a home in the
-        lake and mountains region or along the shores of Cape Cod Axiom is ready
-        to make your dreams come true.
+        lake and mountains region or along the shores of Cape Cod, Axiom is
+        ready to make your dreams come true.
       </p>
       <p>
         <strong>
-          Interested in working with us? Send us an email with a brief
-          description of the project, or call us at{" "}
+          Interested in working with us?{" "}
+          <Link
+            to="/contact"
+            css={css`
+              position: relative;
+              color: ${getColor(Color.Gray900)};
+              text-decoration: none;
+              &:before {
+                content: "";
+                z-index: -1;
+                background: ${getColor(Color.Yellow400)};
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                height: 0.5em;
+              }
+              &:hover {
+                color: ${getColor(Color.Gray900)};
+                &:before {
+                  background: ${getColor(Color.Gray500)};
+                }
+              }
+            `}
+          >
+            Send us an email
+          </Link>{" "}
+          with a brief description of the project, or call us at{" "}
           <a
             css={css`
               position: relative;
@@ -100,7 +125,6 @@ export default () => (
                 position: absolute;
                 bottom: 0;
                 width: 100%;
-                /* transform: scale(1.2); */
                 height: 0.5em;
               }
               &:hover {
@@ -112,82 +136,16 @@ export default () => (
             `}
             href="tel:+9999999999"
           >
-            (999) 999-9999.
+            (999) 999-9999
           </a>
+          .
         </strong>
-      </p>
-    </section>
-    <section id="contact-form" className="container">
-      <h2>Contact form</h2>
-      <form></form>
-    </section>
-    <section className="container">
-      <h2>Hello</h2>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil quos,
-        blanditiis ipsam praesentium ipsa obcaecati dolore. Eius deserunt
-        doloremque et delectus optio? Error possimus quod assumenda? Amet totam
-        deleniti officia?
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil quos,
-        blanditiis ipsam praesentium ipsa obcaecati dolore. Eius deserunt
-        doloremque et delectus optio? Error possimus quod assumenda? Amet totam
-        deleniti officia?
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil quos,
-        blanditiis ipsam praesentium ipsa obcaecati dolore. Eius deserunt
-        doloremque et delectus optio? Error possimus quod assumenda? Amet totam
-        deleniti officia?
-      </p>
-    </section>
-    <section className="container">
-      <h2>Hello</h2>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil quos,
-        blanditiis ipsam praesentium ipsa obcaecati dolore. Eius deserunt
-        doloremque et delectus optio? Error possimus quod assumenda? Amet totam
-        deleniti officia?
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil quos,
-        blanditiis ipsam praesentium ipsa obcaecati dolore. Eius deserunt
-        doloremque et delectus optio? Error possimus quod assumenda? Amet totam
-        deleniti officia?
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil quos,
-        blanditiis ipsam praesentium ipsa obcaecati dolore. Eius deserunt
-        doloremque et delectus optio? Error possimus quod assumenda? Amet totam
-        deleniti officia?
-      </p>
-    </section>
-    <section className="container">
-      <h2>Hello</h2>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil quos,
-        blanditiis ipsam praesentium ipsa obcaecati dolore. Eius deserunt
-        doloremque et delectus optio? Error possimus quod assumenda? Amet totam
-        deleniti officia?
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil quos,
-        blanditiis ipsam praesentium ipsa obcaecati dolore. Eius deserunt
-        doloremque et delectus optio? Error possimus quod assumenda? Amet totam
-        deleniti officia?
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil quos,
-        blanditiis ipsam praesentium ipsa obcaecati dolore. Eius deserunt
-        doloremque et delectus optio? Error possimus quod assumenda? Amet totam
-        deleniti officia?
       </p>
     </section>
   </Layout>
 )
 
-const CTALink = styled.a`
+const CTALink = styled(Link)`
   background: ${getColor(Color.Yellow400)};
   border-radius: var(--border-radius);
   padding: 1rem 2rem;

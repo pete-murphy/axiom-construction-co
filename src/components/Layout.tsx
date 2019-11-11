@@ -36,7 +36,7 @@ export const Layout: FC<Props> = ({ children }) => {
         css={css`
           display: grid;
           grid-template-rows: 1fr auto;
-          min-height: 100%;
+          height: 100%;
         `}
       >
         <main>{children}</main>
@@ -57,7 +57,7 @@ export const Layout: FC<Props> = ({ children }) => {
 
 const LayoutContainer = styled.div`
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: max-content 1fr;
   height: 100vh;
   > * {
     overflow: auto;
@@ -73,5 +73,14 @@ const GlobalStyle = createGlobalStyle`
         color: ${getColor(Color.Blue400)};
       }
     }
+  }
+  input,
+  textarea {
+    border-radius: var(--border-radius);
+    border: none;
+    background: ${getColor(Color.Gray200)};
+    padding: 0.6rem;
+    max-width: 100%;
+    width: 100%;
   }
 `

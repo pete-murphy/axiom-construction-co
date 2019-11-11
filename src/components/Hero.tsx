@@ -5,6 +5,7 @@ import React, { FC, useState } from "react"
 import { css, FlattenSimpleInterpolation } from "styled-components"
 import { getColor, Color } from "lib/colors"
 import { useInterval } from "lib/useInterval"
+import { getBreakpoint, Breakpoint } from "lib/layout"
 
 type Props = { css: FlattenSimpleInterpolation }
 
@@ -62,10 +63,13 @@ export const Hero: FC<Props> = props => {
         css={css`
           display: flex;
           height: 100%;
-          place-content: center;
-          place-items: center;
+          align-items: center;
+          flex-wrap: wrap;
           color: ${getColor(Color.Blue200)};
           font-size: 2rem;
+          ${getBreakpoint(Breakpoint.Min600)} {
+            justify-content: center;
+          }
         `}
       >
         <span
