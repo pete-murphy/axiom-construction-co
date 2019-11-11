@@ -33,6 +33,7 @@ export const ContactForm = () => {
       data-netlify-honeypot="bot-field"
     >
       <input type="hidden" name="bot-field" />
+      <input type="hidden" name="form-name" value="contact" />
       <Label>
         Name
         <input
