@@ -15,9 +15,6 @@ export default () => (
         display: grid;
         grid-template-rows: 1fr auto auto;
         grid-template-columns: 1fr;
-        /* * {
-          outline: 2px solid magenta;
-        } */
       `}
     >
       <Hero

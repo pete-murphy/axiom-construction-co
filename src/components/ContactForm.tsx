@@ -9,16 +9,15 @@ export const ContactForm = () => {
   const [state, handleChangeState] = useFormInput("")
   const [description, handleChangeDescription] = useFormInput("")
 
-  const onSubmit: FormEventHandler = e => {
-    e.preventDefault()
-    console.log({
-      email,
-      name,
-      town,
-      state,
-      description,
-    })
-  }
+  // const onSubmit: FormEventHandler = e => {
+  //   console.log({
+  //     email,
+  //     name,
+  //     town,
+  //     state,
+  //     description,
+  //   })
+  // }
   return (
     <form
       css={css`
@@ -31,7 +30,6 @@ export const ContactForm = () => {
       method="post"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
-      onSubmit={onSubmit}
     >
       <Label>
         Name
