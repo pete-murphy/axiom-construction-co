@@ -8,8 +8,8 @@
 import React, { FC } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
-import { Header } from "./Header"
-import "./layout.scss"
+import { Header } from "components/Header"
+import "components/Layout.scss"
 import styled, { css, createGlobalStyle } from "styled-components"
 import { getColor, Color } from "lib/colors"
 
