@@ -35,7 +35,9 @@ export default () => (
           justify-content: center;
         `}
       >
-        <CTALink to="/contact">Get a quote →</CTALink>
+        <CTALink to="/contact">
+          Get a quote <span className="arrow">→</span>
+        </CTALink>
       </div>
     </div>
     <section
@@ -195,16 +197,43 @@ export default () => (
 )
 
 const CTALink = styled(Link)`
+  position: relative;
   background: ${getColor(Color.Yellow400)};
   border-radius: var(--border-radius);
   padding: 1rem 2rem;
   text-decoration: none;
   color: ${getColor(Color.Gray900)};
+  transition: 200ms all;
+  .arrow {
+    display: inline-block;
+    position: static;
+  }
+  &:focus,
   &:hover {
+    background: white;
+    box-shadow: 0 0 0 3px ${getColor(Color.Yellow400)};
     color: ${getColor(Color.Gray900)};
+    .arrow {
+      animation: pointright 800ms 200ms 1;
+    }
   }
   font-size: 1.2rem;
   font-weight: 600;
+
+  @keyframes pointright {
+    from {
+      transform: translateX(0);
+    }
+    40% {
+      transform: translateX(3px);
+    }
+    60% {
+      transform: translateX(3px);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
 `
 
 const Testimonial = styled.article`

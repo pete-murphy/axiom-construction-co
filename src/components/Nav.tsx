@@ -57,11 +57,9 @@ export const Nav = () => {
             </li>
           ))}
           <li className="phone">
-            <address>
-              <a href={phoneNumber.href}>
-                <Phone size={16} /> {phoneNumber.pretty}
-              </a>
-            </address>
+            <a href={phoneNumber.href}>
+              <Phone size={16} /> {phoneNumber.pretty}
+            </a>
           </li>
         </ul>
       </Nav_>
@@ -114,9 +112,9 @@ const Nav_ = styled.nav<{ isOpen: boolean }>`
         height: 0.5em;
       }
     }
-    .phone {
+    /* .phone {
       display: none;
-    }
+    } */
   }
 
   grid-column: 1 / -1;
@@ -130,9 +128,9 @@ const Nav_ = styled.nav<{ isOpen: boolean }>`
     ul {
       gap: 2rem; /* A little extra breathing room in horizontal layout */
       grid-auto-flow: column;
-      .phone {
+      /* .phone {
         display: initial;
-      }
+      } */
     }
   }
 `

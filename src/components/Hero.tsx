@@ -13,8 +13,8 @@ export const tags = [
   "design & build",
   "site work & septic",
   "solar energy",
-  "residential",
-  "commercial",
+  "residential construction",
+  "commercial construction",
 ]
 
 export const Hero: FC<Props> = props => {
