@@ -44,7 +44,7 @@ export const ContactForm = () => {
         grid-gap: 1rem;
         margin-bottom: 1rem;
       `}
-      action="POST"
+      method="POST"
       name="contact"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
