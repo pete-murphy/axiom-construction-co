@@ -45,8 +45,8 @@ export const ContactForm = () => {
         margin-bottom: 1rem;
       `}
       name="contact"
-      // data-netlify="true"
-      // data-netlify-honeypot="bot-field"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
       onSubmit={handleSubmit}
     >
       <input type="hidden" name="bot-field" />
