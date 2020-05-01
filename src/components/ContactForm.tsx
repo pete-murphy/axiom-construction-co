@@ -3,6 +3,17 @@ import styled, { css } from "styled-components"
 import { getColor, Color } from "lib/colors"
 import { navigate } from "gatsby"
 
+type T = Record<string, string>
+// Not type-safe :(
+const encode = (data: T) => {
+  return Object.keys(data)
+    .map(
+      (key: keyof T) =>
+        encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+    )
+    .join("&")
+}
+
 export const ContactForm = () => {
   const [email, handleChangeEmail] = useFormInput("")
   const [name, handleChangeName] = useFormInput("")
@@ -14,21 +25,34 @@ export const ContactForm = () => {
 
   const handleSubmit: FormEventHandler = e => {
     e.preventDefault()
-    fetch("https://formkeep.com/f/935e631a917e", {
-      method: "post",
-      body: JSON.stringify({
-        name,
-        email,
-        town,
-        state,
-        description,
+    Promise.all([
+      fetch("https://formkeep.com/f/935e631a917e", {
+        method: "POST",
+        body: JSON.stringify({
+          name,
+          email,
+          town,
+          state,
+          description,
+        }),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }).then(res => res.ok && res.json()),
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({
+          "form-name": "contact",
+          name,
+          email,
+          town,
+          state,
+          description,
+        }),
       }),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    })
-      .then(res => res.ok && res.json())
+    ])
       .then(_ => {
         navigate("/success")
       })
@@ -44,13 +68,19 @@ export const ContactForm = () => {
         grid-gap: 1rem;
         margin-bottom: 1rem;
       `}
-      method="POST"
+      // method="POST"
+      // data-netlify="true"
       name="contact"
-      data-netlify="true"
       data-netlify-honeypot="bot-field"
       onSubmit={handleSubmit}
     >
-      <input type="hidden" name="bot-field" />
+      <div
+        css={css`
+          display: none;
+        `}
+      >
+        <input type="text" name="bot-field" />
+      </div>
       <input type="hidden" name="form-name" value="contact" />
       <Label>
         Name
@@ -113,9 +143,6 @@ export const ContactForm = () => {
         >
           Submit
         </button>
-        <div>
-          <div data-netlify-recaptcha="true" />
-        </div>
       </div>
     </form>
   )
