@@ -65,24 +65,8 @@ export default () => (
           <Link
             to="/contact"
             css={css`
-              position: relative;
-              color: ${getColor(Color.Gray900)};
+              color: ${getColor(Color.Blue600)};
               text-decoration: none;
-              &:before {
-                content: "";
-                z-index: -1;
-                background: ${getColor(Color.Yellow400)};
-                position: absolute;
-                bottom: 0;
-                width: 100%;
-                height: 0.5em;
-              }
-              &:hover {
-                color: ${getColor(Color.Gray900)};
-                &:before {
-                  background: ${getColor(Color.Gray500)};
-                }
-              }
             `}
           >
             Send us an email
@@ -90,24 +74,8 @@ export default () => (
           with a brief description of the project, or call us at{" "}
           <a
             css={css`
-              position: relative;
-              color: ${getColor(Color.Gray900)};
+              color: ${getColor(Color.Blue600)};
               text-decoration: none;
-              &:before {
-                content: "";
-                z-index: -1;
-                background: ${getColor(Color.Yellow400)};
-                position: absolute;
-                bottom: 0;
-                width: 100%;
-                height: 0.5em;
-              }
-              &:hover {
-                color: ${getColor(Color.Gray900)};
-                &:before {
-                  background: ${getColor(Color.Gray500)};
-                }
-              }
             `}
             href={`tel:${PHONE_NUMBER}`}
           >
