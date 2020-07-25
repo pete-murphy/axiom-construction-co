@@ -16,6 +16,8 @@ export const Header = ({ siteTitle }: Props) => (
     css={css`
       display: flex;
       justify-content: center;
+      position: sticky;
+      top: 0;
       width: 100%;
       padding: 1rem 1rem 0.5rem;
       background: ${getColor(Color.Background)};

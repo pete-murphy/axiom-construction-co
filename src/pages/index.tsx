@@ -232,8 +232,8 @@ const Testimonial = styled.article`
   display: grid;
   grid-template-columns: 8rem 1fr;
   margin: 0.5rem auto;
-  width: var(--max-width-text);
-  max-width: 100%;
+  max-width: var(--max-width-text);
+  width: 100%;
   p {
     margin-top: 0;
   }

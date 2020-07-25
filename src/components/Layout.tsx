@@ -30,7 +30,7 @@ export const Layout = ({ children }: Props) => {
   `)
 
   return (
-    <LayoutContainer>
+    <>
       <Global
         styles={css`
           body {
@@ -48,27 +48,36 @@ export const Layout = ({ children }: Props) => {
             border-radius: var(--border-radius);
             border: none;
             background: ${getColor(Color.Gray200)};
-            padding: 0.6rem;
+            height: 2.5rem;
             max-width: 100%;
+            padding: 0 0.5rem;
             width: 100%;
+            &:focus {
+              background: transparent;
+            }
+          }
+          textarea {
+            padding: 0.5rem;
+            height: 10rem;
           }
         `}
       />
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <MainWrapper>
-        <main>{children}</main>
-        <Footer>
-          <p>© {new Date().getFullYear()}, Axiom Construction Company</p>
-        </Footer>
-      </MainWrapper>
-    </LayoutContainer>
+      <LayoutContainer>
+        <Header siteTitle={data.site.siteMetadata.title} />
+        <MainWrapper>
+          <main>{children}</main>
+          <Footer>
+            <p>© {new Date().getFullYear()}, Axiom Construction Company</p>
+          </Footer>
+        </MainWrapper>
+      </LayoutContainer>
+    </>
   )
 }
 
 const LayoutContainer = styled.div`
   display: grid;
   grid-template-rows: max-content 1fr;
-  height: 100vh;
 `
 
 const Footer = styled.footer`

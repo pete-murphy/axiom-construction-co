@@ -7,6 +7,7 @@ export enum Color {
   Background = "Background",
   Gray200 = "Gray200",
   Gray500 = "Gray500",
+  Gray700 = "Gray700",
   Gray900 = "Gray900",
   Yellow400 = "Yellow400",
 }
@@ -20,6 +21,7 @@ const colorsMap: { [key in Color]: string } = {
   [Color.Background]: "white",
   [Color.Gray200]: "#EDF2F7",
   [Color.Gray500]: "#A0AEC0",
+  [Color.Gray700]: "#4A5568",
   [Color.Gray900]: "#1A202C",
   [Color.Yellow400]: "#F6E05E",
 }

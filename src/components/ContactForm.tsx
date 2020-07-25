@@ -10,7 +10,7 @@ export const ContactForm = () => {
   const [email, handleChangeEmail] = useFormInput("")
   const [name, handleChangeName] = useFormInput("")
   const [town, handleChangeTown] = useFormInput("")
-  const [state, handleChangeState] = useFormInput("")
+  const [state, handleChangeState] = useFormInput("MA")
   const [message, handleChangeMessage] = useFormInput("")
 
   const handleSubmit: FormEventHandler = e => {
@@ -43,6 +43,7 @@ export const ContactForm = () => {
         grid-template-columns: max-content 3fr max-content 1fr;
         grid-gap: 1rem;
         margin-bottom: 1rem;
+        max-width: 50%;
       `}
       name="contact"
       data-netlify-honeypot="bot-field"
@@ -94,7 +95,9 @@ export const ContactForm = () => {
         </select>
       </Label>
       <Label>
-        Description
+        <span>
+          Message <em>optional</em>
+        </span>
         <textarea
           name="description"
           value={message}
@@ -104,8 +107,8 @@ export const ContactForm = () => {
       <div
         css={css`
           display: flex;
-          justify-content: flex-end;
-          grid-column: -2 / -1;
+          /* justify-content: flex-end;
+          grid-column: -2 / -1; */
         `}
       >
         <button
@@ -145,6 +148,7 @@ const Label = styled.label<{ span?: number }>`
     grid-column: span ${p => (p.span || 4) - 1};
     resize: none;
   }
+  color: ${getColor(Color.Gray700)};
 `
 
 const STATES = ["CT", "MA", "ME", "NH", "NY", "RI", "VT"]
