@@ -18,9 +18,31 @@ export const Gallery = (props: Props) => {
         }
       }
 
+      interiorRemodel: allFile(
+        filter: { relativeDirectory: { in: "gallery/interior-remodel" } }
+      ) {
+        nodes {
+          childImageSharp {
+            fluid(quality: 90, maxWidth: 960) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
+      }
+
       siteSeptic: allFile(
         filter: { relativeDirectory: { in: "gallery/site-septic" } }
       ) {
+        nodes {
+          childImageSharp {
+            fluid(quality: 90, maxWidth: 960) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
+      }
+
+      solar: allFile(filter: { relativeDirectory: { in: "gallery/solar" } }) {
         nodes {
           childImageSharp {
             fluid(quality: 90, maxWidth: 960) {
@@ -34,7 +56,7 @@ export const Gallery = (props: Props) => {
 
   return (
     <GalleryContainer>
-      {imageData[props.route].nodes.map((img: any) => (
+      {imageData[props.section].nodes.map((img: any) => (
         <GatsbyImage fluid={img.childImageSharp.fluid} />
       ))}
     </GalleryContainer>
@@ -42,7 +64,7 @@ export const Gallery = (props: Props) => {
 }
 
 type Props = {
-  route: GalleryRoute
+  section: GallerySection
 }
 
 const GalleryContainer = styled.div`
@@ -52,7 +74,9 @@ const GalleryContainer = styled.div`
   margin-bottom: 3rem;
 `
 
-export enum GalleryRoute {
+export enum GallerySection {
   Construction = "construction",
+  InteriorRemodel = "interiorRemodel",
   SiteSeptic = "siteSeptic",
+  Solar = "solar",
 }

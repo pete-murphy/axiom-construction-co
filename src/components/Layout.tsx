@@ -43,7 +43,8 @@ export const Layout = ({ children }: Props) => {
             }
           }
           input,
-          textarea {
+          textarea,
+          select {
             border-radius: var(--border-radius);
             border: none;
             background: ${getColor(Color.Gray200)};
@@ -68,9 +69,6 @@ const LayoutContainer = styled.div`
   display: grid;
   grid-template-rows: max-content 1fr;
   height: 100vh;
-  > * {
-    overflow: auto;
-  }
 `
 
 const Footer = styled.footer`
@@ -84,4 +82,7 @@ const MainWrapper = styled.div`
   display: grid;
   grid-template-rows: 1fr auto;
   height: 100%;
+  > * {
+    overflow: auto;
+  }
 `

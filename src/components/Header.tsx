@@ -17,7 +17,7 @@ export const Header = ({ siteTitle }: Props) => (
       display: flex;
       justify-content: center;
       width: 100%;
-      padding: 1rem 2rem 0.5rem;
+      padding: 1rem 1rem 0.5rem;
       background: ${getColor(Color.Background)};
       z-index: 2;
       box-shadow: 0 0 4rem ${transparentize(10)(Color.Gray900)};
@@ -36,7 +36,7 @@ export const Header = ({ siteTitle }: Props) => (
 
 const HeaderWrapper = styled.div`
   flex-grow: 1;
-  max-width: 1200px;
+  max-width: var(--max-width);
   display: grid;
   grid-template-columns: max-content 1fr;
   grid-template-rows: auto 1fr;

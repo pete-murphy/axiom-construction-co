@@ -6,7 +6,6 @@
     "lib": ["dom", "esnext"],
     "strict": true,
     "noEmit": true,
-    // "isolatedModules": true,
     "esModuleInterop": true,
     "noUnusedLocals": false,
     "noImplicitAny": true,
@@ -14,9 +13,7 @@
     "baseUrl": "src",
     "moduleResolution": "node",
     "noImplicitReturns": true,
-    "typeRoots": ["./node_modules/@types", "./src/typings"],
     "allowSyntheticDefaultImports": true,
-    // "baseUrl": ".",
     "forceConsistentCasingInFileNames": true
   },
   "exclude": ["node_modules", "public", ".cache"]

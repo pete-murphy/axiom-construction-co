@@ -63,21 +63,21 @@ export default () => (
           Better Results
         </span>
       </h2>
-      <p>
+      <P>
         With nearly 100 combined years of building experience, the team at Axiom
         Construction Company understands the choice that homeowners face when
         choosing a builder. We mean what we say when we tell our clients that we{" "}
         <em>build</em> relationships. It means taking a client-centric approach
         to the homebuilding process—from pre-construction consultation{" "}
         <em>all the way</em> to final walkthrough.
-      </p>
-      <p>
+      </P>
+      <P>
         Axiom Construction Company currently operates in Massachusetts, New
         Hampshire and Maine. If you are building or remodeling a home in the
         lake and mountains region or along the shores of Cape Cod, Axiom is
         ready to make your dreams come true.
-      </p>
-      <p>
+      </P>
+      <P>
         <strong>
           Interested in working with us?{" "}
           <Link
@@ -133,7 +133,7 @@ export default () => (
           </a>
           .
         </strong>
-      </p>
+      </P>
     </section>
     <div
       css={css`
@@ -231,14 +231,22 @@ const CTALink = styled(Link)`
 const Testimonial = styled.article`
   display: grid;
   grid-template-columns: 8rem 1fr;
-  /* outline: 1px solid red;
-  * {
-    outline: 3px dashed yellow;
-  } */
+  margin: 0.5rem auto;
+  width: var(--max-width-text);
+  max-width: 100%;
+  p {
+    margin-top: 0;
+  }
 `
 
 const Header = styled.header`
   display: grid;
   grid-template-rows: 1fr auto auto;
   grid-template-columns: 1fr;
+`
+
+const P = styled.p`
+  margin: 1rem auto;
+  width: var(--max-width-text);
+  max-width: 100%;
 `

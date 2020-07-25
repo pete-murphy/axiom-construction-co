@@ -7,18 +7,10 @@ import { getColor, Color } from "lib/colors"
 import { useInterval } from "lib/useInterval"
 import { getBreakpoint, Breakpoint } from "lib/layout"
 
-export const tags = [
-  "design & build",
-  "site work & septic",
-  "solar energy",
-  "residential construction",
-  "commercial construction",
-]
-
 export const Hero = () => {
   const [currentTagIndex, setCurrentTagIndex] = useState(0)
 
-  const getNextIx = (ix: number) => (ix + 1) % tags.length
+  const getNextIx = (ix: number) => (ix + 1) % TAGS.length
   const isPrev = (ix: number) => getNextIx(currentTagIndex) === ix
 
   useInterval(() => {
@@ -84,7 +76,7 @@ export const Hero = () => {
             display: grid;
           `}
         >
-          {tags.map((tag, ix) => (
+          {TAGS.map((tag, ix) => (
             <li
               key={tag}
               css={css`
@@ -117,3 +109,11 @@ export const Hero = () => {
     </BackgroundImage>
   )
 }
+
+const TAGS = [
+  "design & build",
+  "site work & septic",
+  "solar energy",
+  "residential construction",
+  "commercial construction",
+]
