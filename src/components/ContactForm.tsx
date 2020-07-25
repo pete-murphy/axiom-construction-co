@@ -43,7 +43,8 @@ export const ContactForm = () => {
         grid-template-columns: max-content 3fr max-content 1fr;
         grid-gap: 1rem;
         margin-bottom: 1rem;
-        max-width: 50%;
+        min-width: 50%;
+        max-width: 32rem;
       `}
       name="contact"
       data-netlify-honeypot="bot-field"

@@ -7,17 +7,15 @@ import { getColor, Color } from "lib/colors"
 import { QuoteNameCard } from "components/QuoteNameCard"
 import { Layout } from "components/Layout"
 import { SEO } from "components/SEO"
-import { Hero } from "components/Hero"
 import { PHONE_NUMBER } from "data/constants"
 import { css } from "@emotion/core"
-import { boxShadow } from "lib/styles"
-import { HeroNew } from "components/HeroNew"
+import { Hero } from "components/Hero"
 
 export default () => (
   <Layout>
     <SEO title="Home" />
     <Header>
-      <HeroNew />
+      <Hero />
       <div
         css={css`
           grid-row: 2 / 4;

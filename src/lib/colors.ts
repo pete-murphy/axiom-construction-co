@@ -35,6 +35,10 @@ const clamp = (min: number, max: number) => (n: number) =>
 
 export const getColor = (color: Color) => colorsMap[color]
 
+/**
+ *
+ * @param opacity number between 0-100
+ */
 export const transparentize = (opacity = 0) => (color: Color) => {
   const opacity_ = clamp(0, 255)(Math.floor((opacity / 100) * 255))
   return `${getColor(color)}${opacity_

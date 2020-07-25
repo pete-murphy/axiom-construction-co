@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { Link } from "gatsby"
 
 import { getBreakpoint, Breakpoint } from "lib/layout"
-import { Color, getColor } from "lib/colors"
+import { Color, getColor, transparentize } from "lib/colors"
 import { Phone } from "components/icons/Phone"
 import styled from "@emotion/styled"
 import { PHONE_NUMBER } from "data/constants"
@@ -82,33 +82,26 @@ const Nav_ = styled.nav<{ isOpen: boolean }>`
   align-items: flex-end;
   ul {
     display: grid;
-    text-align: right;
-
     font-size: 1.2rem;
     grid-auto-flow: row;
-    gap: 1rem;
-    align-items: flex-end;
+    align-items: end;
+    justify-items: end;
+    gap: 0.25rem;
     a {
+      display: inline-block;
+      padding: 0.5rem;
+      border-radius: var(--border-radius);
       text-decoration: none;
       color: ${getColor(Color.Gray500)};
       &:hover,
       &:focus {
         color: ${getColor(Color.Gray900)};
+        background: ${transparentize(50)(Color.Yellow400)};
       }
     }
     .active {
       position: relative;
       color: ${getColor(Color.Gray900)};
-      &:before {
-        content: "";
-        z-index: -1;
-        background: ${getColor(Color.Yellow400)};
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        transform: scale(1.2);
-        height: 0.5em;
-      }
     }
     /* .phone {
       display: none;
