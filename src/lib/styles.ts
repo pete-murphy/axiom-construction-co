@@ -19,7 +19,7 @@ export const containerWidth = css`
   margin: 1rem auto;
 `
 
-export const containerWidthResst = css`
+export const containerWidthReset = css`
   max-width: 100%;
   width: 100%;
   margin: initial;

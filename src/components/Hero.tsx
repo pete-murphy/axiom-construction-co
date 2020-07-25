@@ -5,7 +5,7 @@ import React from "react"
 import { getColor, Color } from "lib/colors"
 import { getBreakpoint, Breakpoint } from "lib/layout"
 import styled from "@emotion/styled"
-import { boxShadow, containerWidth, containerWidthResst } from "lib/styles"
+import { boxShadow, containerWidth, containerWidthReset } from "lib/styles"
 
 export const Hero = () => {
   const imageData = useStaticQuery(imageQuery)
@@ -20,7 +20,11 @@ export const Hero = () => {
         </P>
       </HeroLeft>
       <HeroRight>
-        <ImageContainer>
+        <ImageContainer className="sm">
+          <StyledImg fluid={imageData["construction"].childImageSharp.fluid} />
+        </ImageContainer>
+
+        <ImageContainer className="lg">
           <ImageColumn offsetTop={8}>
             {IMAGE_KEYS_1.map(img => (
               <StyledImg
@@ -67,7 +71,7 @@ const HeroContainer = styled.div`
     width: 100%;
     max-width: 100vw;
     grid-template-columns:
-      minmax(4rem, 1fr) max(24rem) max(10rem) max(30rem)
+      minmax(4rem, 1fr) 24rem 10rem 30rem
       minmax(4rem, 1fr);
   }
 `
@@ -76,43 +80,58 @@ const HeroH2 = styled.h2`
   color: ${getColor(Color.Blue800)};
   font-size: 3.5rem;
   letter-spacing: -0.04em;
-  line-height: 0.95em;
+  line-height: 1em;
   margin-top: 1rem;
 `
 
 const P = styled.p`
+  color: ${getColor(Color.Gray700)};
   max-width: 100%;
+  font-size: 1.25rem;
+  line-height: 1.25em;
   ${getBreakpoint(Breakpoint.Min600)} {
     max-width: 22rem;
+    font-size: 2rem;
   }
 `
 
 const HeroLeft = styled.div`
   grid-row: 1 / 2;
   z-index: 1;
-  ${containerWidth}
+  ${containerWidth};
   ${getBreakpoint(Breakpoint.Min600)} {
-    ${containerWidthResst}
+    ${containerWidthReset}
+
     grid-column: 2 / 4;
   }
 `
 const HeroRight = styled.div`
-  display: none;
-  grid-row: 1 / 2;
-  grid-column: 3 / -1;
   ${getBreakpoint(Breakpoint.Min600)} {
-    display: initial;
+    grid-row: 1 / 2;
+    grid-column: 3 / -1;
   }
 `
 
 const ImageContainer = styled.div`
-  position: relative;
-  transform: rotate(5deg);
-  grid-column: 2 / -1;
+  &.lg {
+    display: none;
+    ${getBreakpoint(Breakpoint.Min600)} {
+      display: inherit;
+      position: relative;
+      transform: rotate(5deg);
+      grid-column: 2 / -1;
 
-  display: grid;
-  grid-template-columns: 2fr 2fr 3fr;
-  gap: 1rem;
+      display: grid;
+      grid-template-columns: 2fr 2fr 3fr;
+      gap: 1rem;
+    }
+  }
+  &.sm {
+    display: initial;
+    ${getBreakpoint(Breakpoint.Min600)} {
+      display: none;
+    }
+  }
 `
 
 const ImageColumn = styled.div<{ offsetTop: number }>`

@@ -15,21 +15,14 @@ export default () => (
   <Layout>
     <SEO title="Home" />
     <Header>
-      <Hero />
-      <div
-        css={css`
-          grid-row: 2 / 4;
-          grid-column: 1 / -1;
-          z-index: 1;
-
-          display: flex;
-          justify-content: center;
-        `}
-      >
+      <HeroWrapper>
+        <Hero />
+      </HeroWrapper>
+      <HeroCTAWrapper>
         <CTALink to="/contact">
           Get a quote <span className="arrow">→</span>
         </CTALink>
-      </div>
+      </HeroCTAWrapper>
     </Header>
 
     <section
@@ -239,4 +232,17 @@ const P = styled.p`
   margin: 1rem auto;
   width: var(--max-width-text);
   max-width: 100%;
+`
+
+const HeroWrapper = styled.div`
+  grid-row: 1 / 3;
+  grid-column: 1 / -1;
+`
+const HeroCTAWrapper = styled.div`
+  grid-row: 2 / 4;
+  grid-column: 1 / -1;
+  z-index: 1;
+
+  display: flex;
+  justify-content: center;
 `
