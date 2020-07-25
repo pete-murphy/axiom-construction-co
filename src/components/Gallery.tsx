@@ -3,9 +3,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import GatsbyImage from "gatsby-image"
 import styled from "@emotion/styled"
 
-export const Gallery = () => <h2>Placeholder</h2>
-
-const _Gallery = (props: Props) => {
+export const Gallery = (props: Props) => {
   const imageData = useStaticQuery(graphql`
     query {
       construction: allFile(
