@@ -1,9 +1,12 @@
 import React, { useState } from "react"
 import { Link } from "gatsby"
-import styled, { css } from "styled-components"
+
 import { getBreakpoint, Breakpoint } from "lib/layout"
 import { Color, getColor } from "lib/colors"
-import { Phone } from "./icons/Phone"
+import { Phone } from "components/icons/Phone"
+import styled from "@emotion/styled"
+import { PHONE_NUMBER } from "data/constants"
+import { css } from "@emotion/core"
 
 export const routes = [
   {
@@ -23,11 +26,6 @@ export const routes = [
     title: "Contact",
   },
 ]
-
-export const phoneNumber = {
-  href: "tel:1-508-247-0070",
-  pretty: "(508) 247-0070",
-}
 
 export const Nav = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -57,9 +55,9 @@ export const Nav = () => {
             </li>
           ))}
           <li className="phone">
-            <a href={phoneNumber.href}>
-              <Phone size={16} /> {phoneNumber.pretty}
-            </a>
+            <PhoneLink href={`tel:${PHONE_NUMBER}`}>
+              <Phone size={16} /> <span>{PHONE_NUMBER}</span>
+            </PhoneLink>
           </li>
         </ul>
       </Nav_>
@@ -128,9 +126,13 @@ const Nav_ = styled.nav<{ isOpen: boolean }>`
     ul {
       gap: 2rem; /* A little extra breathing room in horizontal layout */
       grid-auto-flow: column;
-      /* .phone {
-        display: initial;
-      } */
     }
   }
+`
+
+const PhoneLink = styled.a`
+  display: inline-grid;
+  grid-auto-flow: column;
+  gap: 0.25rem;
+  align-items: center;
 `

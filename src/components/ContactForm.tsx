@@ -1,58 +1,34 @@
 import React, { useState, ChangeEventHandler, FormEventHandler } from "react"
-import styled, { css } from "styled-components"
-import { getColor, Color } from "lib/colors"
 import { navigate } from "gatsby"
+import { stringify } from "query-string"
 
-type T = Record<string, string>
-// Not type-safe :(
-const encode = (data: T) => {
-  return Object.keys(data)
-    .map(
-      (key: keyof T) =>
-        encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
-    )
-    .join("&")
-}
+import { getColor, Color } from "lib/colors"
+import styled from "@emotion/styled"
+import { css } from "@emotion/core"
 
 export const ContactForm = () => {
   const [email, handleChangeEmail] = useFormInput("")
   const [name, handleChangeName] = useFormInput("")
   const [town, handleChangeTown] = useFormInput("")
   const [state, handleChangeState] = useFormInput("")
-  const [description, handleChangeDescription] = useFormInput("")
-
-  const isValid = [name, email, town, state].every(field => field.length > 0)
+  const [message, handleChangeMessage] = useFormInput("")
 
   const handleSubmit: FormEventHandler = e => {
     e.preventDefault()
-    Promise.all([
-      fetch("https://formkeep.com/f/935e631a917e", {
-        method: "POST",
-        body: JSON.stringify({
-          name,
-          email,
-          town,
-          state,
-          description,
-        }),
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-      }).then(res => res.ok && res.json()),
-      fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({
-          "form-name": "contact",
-          name,
-          email,
-          town,
-          state,
-          description,
-        }),
+
+    // Submit form using Netlify
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: stringify({
+        "form-name": "contact",
+        name,
+        email,
+        town,
+        state,
+        message,
       }),
-    ])
+    })
       .then(_ => {
         navigate("/success")
       })
@@ -68,8 +44,6 @@ export const ContactForm = () => {
         grid-gap: 1rem;
         margin-bottom: 1rem;
       `}
-      // method="POST"
-      // data-netlify="true"
       name="contact"
       data-netlify-honeypot="bot-field"
       onSubmit={handleSubmit}
@@ -111,19 +85,20 @@ export const ContactForm = () => {
       </Label>
       <Label span={2}>
         State
-        <input
-          type="text"
-          name="state"
-          value={state}
-          onChange={handleChangeState}
-        />
+        <select name="state" value={state} onChange={handleChangeState}>
+          {STATES.map(state => (
+            <option key={state} value={state}>
+              {state}
+            </option>
+          ))}
+        </select>
       </Label>
       <Label>
         Description
         <textarea
           name="description"
-          value={description}
-          onChange={handleChangeDescription}
+          value={message}
+          onChange={handleChangeMessage}
         />
       </Label>
       <div
@@ -139,7 +114,6 @@ export const ContactForm = () => {
             font-weight: 600;
             background: ${getColor(Color.Yellow400)};
           `}
-          disabled={!isValid}
         >
           Submit
         </button>
@@ -150,7 +124,10 @@ export const ContactForm = () => {
 
 const useFormInput = (
   initialState: string
-): [string, ChangeEventHandler<HTMLInputElement & HTMLTextAreaElement>] => {
+): [
+  string,
+  ChangeEventHandler<HTMLSelectElement & HTMLInputElement & HTMLTextAreaElement>
+] => {
   const [state, setState] = useState<string>(initialState)
   const handleChange: ChangeEventHandler<HTMLInputElement> = e => {
     e.persist()
@@ -169,3 +146,5 @@ const Label = styled.label<{ span?: number }>`
     resize: none;
   }
 `
+
+const STATES = ["CT", "MA", "ME", "NH", "NY", "RI", "VT"]

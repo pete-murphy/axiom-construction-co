@@ -1,30 +1,21 @@
-import React, { FC } from "react"
+import React from "react"
 import { Link } from "gatsby"
 
+import styled from "@emotion/styled"
+
+import { getColor, Color } from "lib/colors"
+import { QuoteNameCard } from "components/QuoteNameCard"
 import { Layout } from "components/Layout"
 import { SEO } from "components/SEO"
-import styled, { css } from "styled-components"
 import { Hero } from "components/Hero"
-import { getColor, Color } from "lib/colors"
-import { Mail } from "components/icons/Mail"
-import { phoneNumber } from "components/Nav"
+import { PHONE_NUMBER } from "data/constants"
+import { css } from "@emotion/core"
 
 export default () => (
   <Layout>
     <SEO title="Home" />
-    <div
-      css={css`
-        display: grid;
-        grid-template-rows: 1fr auto auto;
-        grid-template-columns: 1fr;
-      `}
-    >
-      <Hero
-        css={css`
-          grid-row: 1 / 3;
-          grid-column: 1 / -1;
-        `}
-      />
+    <Header>
+      <Hero />
       <div
         css={css`
           grid-row: 2 / 4;
@@ -39,7 +30,8 @@ export default () => (
           Get a quote <span className="arrow">→</span>
         </CTALink>
       </div>
-    </div>
+    </Header>
+
     <section
       className="container"
       css={css`
@@ -135,9 +127,9 @@ export default () => (
                 }
               }
             `}
-            href={phoneNumber.href}
+            href={`tel:${PHONE_NUMBER}`}
           >
-            {phoneNumber.pretty}
+            {PHONE_NUMBER}
           </a>
           .
         </strong>
@@ -245,28 +237,8 @@ const Testimonial = styled.article`
   } */
 `
 
-type QuoteNameCardProps = {
-  name: string
-  town: string
-}
-
-const QuoteNameCard: FC<QuoteNameCardProps> = props => (
-  <div
-    css={css`
-      display: flex;
-      flex-direction: column;
-      color: ${getColor(Color.Blue400)};
-    `}
-  >
-    <Mail />
-    <div
-      css={css`
-        margin-top: 0.5rem;
-        font-weight: 800;
-      `}
-    >
-      {props.name}
-    </div>
-    <div>{props.town}</div>
-  </div>
-)
+const Header = styled.header`
+  display: grid;
+  grid-template-rows: 1fr auto auto;
+  grid-template-columns: 1fr;
+`

@@ -5,19 +5,20 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React, { FC } from "react"
+import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import styled from "@emotion/styled"
+import { css, Global } from "@emotion/core"
 
+import { getColor, Color } from "lib/colors"
 import { Header } from "components/Header"
 import "components/Layout.scss"
-import styled, { css, createGlobalStyle } from "styled-components"
-import { getColor, Color } from "lib/colors"
 
 type Props = {
   children: JSX.Element | Array<JSX.Element>
 }
 
-export const Layout: FC<Props> = ({ children }) => {
+export const Layout = ({ children }: Props) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -30,27 +31,35 @@ export const Layout: FC<Props> = ({ children }) => {
 
   return (
     <LayoutContainer>
-      <GlobalStyle />
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        css={css`
-          display: grid;
-          grid-template-rows: 1fr auto;
-          height: 100%;
+      <Global
+        styles={css`
+          body {
+            color: ${getColor(Color.Gray900)};
+            a {
+              color: ${getColor(Color.Blue800)};
+              &:hover {
+                color: ${getColor(Color.Blue400)};
+              }
+            }
+          }
+          input,
+          textarea {
+            border-radius: var(--border-radius);
+            border: none;
+            background: ${getColor(Color.Gray200)};
+            padding: 0.6rem;
+            max-width: 100%;
+            width: 100%;
+          }
         `}
-      >
+      />
+      <Header siteTitle={data.site.siteMetadata.title} />
+      <MainWrapper>
         <main>{children}</main>
-        <footer
-          css={css`
-            height: 4rem;
-            display: grid;
-            align-content: center;
-            justify-items: center;
-          `}
-        >
+        <Footer>
           <p>© {new Date().getFullYear()}, Axiom Construction Company</p>
-        </footer>
-      </div>
+        </Footer>
+      </MainWrapper>
     </LayoutContainer>
   )
 }
@@ -64,23 +73,15 @@ const LayoutContainer = styled.div`
   }
 `
 
-const GlobalStyle = createGlobalStyle`
-  body {
-    color: ${getColor(Color.Gray900)};
-    a {
-      color: ${getColor(Color.Blue800)};
-      &:hover {
-        color: ${getColor(Color.Blue400)};
-      }
-    }
-  }
-  input,
-  textarea {
-    border-radius: var(--border-radius);
-    border: none;
-    background: ${getColor(Color.Gray200)};
-    padding: 0.6rem;
-    max-width: 100%;
-    width: 100%;
-  }
+const Footer = styled.footer`
+  height: 4rem;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+`
+
+const MainWrapper = styled.div`
+  display: grid;
+  grid-template-rows: 1fr auto;
+  height: 100%;
 `

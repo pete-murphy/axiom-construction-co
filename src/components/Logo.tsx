@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import React from "react"
 
 export const Logo: FC = () => (
   <svg viewBox="0 0 800 403.737">

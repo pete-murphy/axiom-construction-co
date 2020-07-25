@@ -1,20 +1,9 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import GatsbyImage from "gatsby-image"
-import styled from "styled-components"
+import styled from "@emotion/styled"
 
-const GalleryContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  gap: 0.5rem;
-`
-
-export enum GalleryRoute {
-  Construction = "construction",
-  SiteSeptic = "siteSeptic",
-}
-
-export const Gallery = (props: GalleryProps) => {
+export const Gallery = (props: Props) => {
   const imageData = useStaticQuery(graphql`
     query {
       construction: allFile(
@@ -52,6 +41,18 @@ export const Gallery = (props: GalleryProps) => {
   )
 }
 
-export type GalleryProps = {
+type Props = {
   route: GalleryRoute
+}
+
+const GalleryContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 3rem;
+`
+
+export enum GalleryRoute {
+  Construction = "construction",
+  SiteSeptic = "siteSeptic",
 }

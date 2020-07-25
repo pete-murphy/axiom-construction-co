@@ -1,9 +1,9 @@
-import React, { FC } from "react"
+import React from "react"
 import { FlattenSimpleInterpolation } from "styled-components"
 
 type Props = { css?: FlattenSimpleInterpolation; size?: number }
 
-export const Phone: FC<Props> = ({ size = 24 }) => (
+export const Phone = ({ size = 24 }: Props) => (
   <svg
     width={size}
     height={size}

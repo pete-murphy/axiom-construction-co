@@ -1,13 +1,11 @@
 import BackgroundImage from "gatsby-background-image"
 import { graphql, useStaticQuery } from "gatsby"
-import React, { FC, useState } from "react"
+import React, { useState } from "react"
+import { css } from "@emotion/core"
 
-import { css, FlattenSimpleInterpolation } from "styled-components"
 import { getColor, Color } from "lib/colors"
 import { useInterval } from "lib/useInterval"
 import { getBreakpoint, Breakpoint } from "lib/layout"
-
-type Props = { css: FlattenSimpleInterpolation }
 
 export const tags = [
   "design & build",
@@ -17,7 +15,7 @@ export const tags = [
   "commercial construction",
 ]
 
-export const Hero: FC<Props> = props => {
+export const Hero = () => {
   const [currentTagIndex, setCurrentTagIndex] = useState(0)
 
   const getNextIx = (ix: number) => (ix + 1) % tags.length
@@ -48,8 +46,9 @@ export const Hero: FC<Props> = props => {
   return (
     <BackgroundImage
       Tag="header"
-      {...props}
       css={css`
+        grid-row: 1 / 3;
+        grid-column: 1 / -1;
         width: 100%;
         background-position: center;
         background-repeat: repeat-y;
