@@ -37,30 +37,17 @@ export const ContactForm = () => {
       })
   }
   return (
-    <form
-      css={css`
-        display: grid;
-        grid-template-columns: max-content 3fr max-content 1fr;
-        grid-gap: 1rem;
-        margin-bottom: 1rem;
-        min-width: 50%;
-        max-width: 32rem;
-      `}
+    <Form
       name="contact"
       data-netlify-honeypot="bot-field"
       onSubmit={handleSubmit}
     >
-      <div
-        css={css`
-          display: none;
-        `}
-      >
-        <input type="text" name="bot-field" />
-      </div>
+      <BotField />
       <input type="hidden" name="form-name" value="contact" />
       <Label>
-        Name
+        Name*
         <input
+          required
           type="text"
           name="name"
           value={name}
@@ -68,8 +55,9 @@ export const ContactForm = () => {
         />
       </Label>
       <Label>
-        Email
+        Email*
         <input
+          required
           type="email"
           name="email"
           value={email}
@@ -77,8 +65,9 @@ export const ContactForm = () => {
         />
       </Label>
       <Label span={2}>
-        Town
+        Town*
         <input
+          required
           type="text"
           name="town"
           value={town}
@@ -86,7 +75,7 @@ export const ContactForm = () => {
         />
       </Label>
       <Label span={2}>
-        State
+        State*
         <select name="state" value={state} onChange={handleChangeState}>
           {STATES.map(state => (
             <option key={state} value={state}>
@@ -97,7 +86,7 @@ export const ContactForm = () => {
       </Label>
       <Label>
         <span>
-          Message <em>optional</em>
+          Message <em>(optional)</em>
         </span>
         <textarea
           name="message"
@@ -105,24 +94,10 @@ export const ContactForm = () => {
           onChange={handleChangeMessage}
         />
       </Label>
-      <div
-        css={css`
-          display: flex;
-          /* justify-content: flex-end;
-          grid-column: -2 / -1; */
-        `}
-      >
-        <button
-          css={css`
-            padding: 1rem 2rem;
-            font-weight: 600;
-            background: ${getColor(Color.Yellow400)};
-          `}
-        >
-          Submit
-        </button>
+      <div>
+        <SubmitButton>Submit</SubmitButton>
       </div>
-    </form>
+    </Form>
   )
 }
 
@@ -142,14 +117,39 @@ const useFormInput = (
 
 const Label = styled.label<{ span?: number }>`
   display: grid;
-  grid-column: span ${p => p.span || 4};
+  grid-column: span ${props => props.span || 4};
   align-items: center;
   input,
   textarea {
-    grid-column: span ${p => (p.span || 4) - 1};
+    grid-column: span ${props => (props.span || 4) - 1};
     resize: none;
   }
   color: ${getColor(Color.Gray700)};
 `
 
 const STATES = ["CT", "MA", "ME", "NH", "NY", "RI", "VT"]
+
+const Form = styled.form`
+  display: grid;
+  grid-template-columns: max-content 3fr max-content max-content;
+  grid-gap: 1rem;
+  margin-bottom: 1rem;
+  min-width: 50%;
+  max-width: 32rem;
+`
+
+const SubmitButton = styled.button`
+  padding: 1rem 2rem;
+  font-weight: 600;
+  background: ${getColor(Color.Yellow400)};
+`
+
+const BotField = () => (
+  <div
+    css={css`
+      display: none;
+    `}
+  >
+    <input type="text" name="bot-field" />
+  </div>
+)

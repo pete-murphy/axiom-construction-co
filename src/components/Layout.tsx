@@ -52,9 +52,13 @@ export const Layout = ({ children }: Props) => {
             border: none;
             outline: none;
             &:focus {
-              box-shadow: 0 0 0 0.25rem #63b3ed;
+              box-shadow: 0 0 0 0.25rem ${getColor(Color.Blue400)};
             }
           }
+          select {
+            -webkit-appearance: none;
+          }
+
           a {
             outline: none;
           }

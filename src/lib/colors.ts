@@ -12,6 +12,7 @@ export enum Color {
   Orange400 = "Orange400",
   Yellow400 = "Yellow400",
   Indigo900 = "Indigo900",
+  Red500 = "Red500",
 }
 
 const colorsMap: { [key in Color]: string } = {
@@ -28,6 +29,7 @@ const colorsMap: { [key in Color]: string } = {
   [Color.Orange400]: "#F6AD55",
   [Color.Yellow400]: "#F6E05E",
   [Color.Indigo900]: "#3C366B",
+  [Color.Red500]: "#F56565",
 }
 
 const clamp = (min: number, max: number) => (n: number) =>
