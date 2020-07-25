@@ -6,6 +6,7 @@ import { getColor, Color, transparentize } from "lib/colors"
 import { Logo } from "components/Logo"
 import { Nav } from "components/Nav"
 import styled from "@emotion/styled"
+import { boxShadow } from "lib/styles"
 
 type Props = {
   siteTitle: string
@@ -22,7 +23,7 @@ export const Header = ({ siteTitle }: Props) => (
       padding: 1rem 1rem 0.5rem;
       background: ${getColor(Color.Background)};
       z-index: 2;
-      box-shadow: 0 0 4rem ${transparentize(10)(Color.Gray900)};
+      ${boxShadow(Color.Gray900, 10)}
     `}
   >
     <HeaderWrapper>

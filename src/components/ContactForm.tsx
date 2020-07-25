@@ -99,7 +99,7 @@ export const ContactForm = () => {
           Message <em>optional</em>
         </span>
         <textarea
-          name="description"
+          name="message"
           value={message}
           onChange={handleChangeMessage}
         />

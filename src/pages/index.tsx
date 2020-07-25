@@ -10,12 +10,14 @@ import { SEO } from "components/SEO"
 import { Hero } from "components/Hero"
 import { PHONE_NUMBER } from "data/constants"
 import { css } from "@emotion/core"
+import { boxShadow } from "lib/styles"
+import { HeroNew } from "components/HeroNew"
 
 export default () => (
   <Layout>
     <SEO title="Home" />
     <Header>
-      <Hero />
+      <HeroNew />
       <div
         css={css`
           grid-row: 2 / 4;
@@ -36,9 +38,10 @@ export default () => (
       className="container"
       css={css`
         padding-top: 4rem;
+        background: white;
       `}
     >
-      <h2
+      <h3
         css={css`
           > span {
             display: block;
@@ -46,23 +49,11 @@ export default () => (
           font-size: 2.4rem;
           line-height: 1.1em;
           padding-bottom: 1rem;
+          color: ${getColor(Color.Blue800)};
         `}
       >
-        <span
-          css={css`
-            color: ${getColor(Color.Gray500)};
-          `}
-        >
-          Shared Values,
-        </span>
-        <span
-          css={css`
-            color: ${getColor(Color.Blue800)};
-          `}
-        >
-          Better Results
-        </span>
-      </h2>
+        Shared Values, Better Results
+      </h3>
       <P>
         With nearly 100 combined years of building experience, the team at Axiom
         Construction Company understands the choice that homeowners face when
@@ -138,6 +129,7 @@ export default () => (
     <div
       css={css`
         background: ${getColor(Color.Blue800)};
+        position: relative;
         color: white;
         margin: 4rem 0 0;
         padding: 2rem 0;

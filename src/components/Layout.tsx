@@ -37,11 +37,28 @@ export const Layout = ({ children }: Props) => {
             color: ${getColor(Color.Gray900)};
             a {
               color: ${getColor(Color.Blue800)};
-              &:hover {
+              &:hover,
+              &:focus {
                 color: ${getColor(Color.Blue400)};
               }
             }
           }
+
+          input,
+          button,
+          select,
+          textarea {
+            border-radius: var(--border-radius);
+            border: none;
+            outline: none;
+            &:focus {
+              box-shadow: 0 0 0 0.25rem #63b3ed;
+            }
+          }
+          a {
+            outline: none;
+          }
+
           input,
           textarea,
           select {

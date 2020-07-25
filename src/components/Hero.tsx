@@ -19,15 +19,41 @@ export const Hero = () => {
 
   const imageData = useStaticQuery(graphql`
     query {
-      blueprints: file(
-        relativePath: { eq: "sven-mieke-fteR0e2BzKo-unsplash.jpg" }
+      construction_1: file(
+        relativePath: { eq: "gallery/construction/October 29 2019 057.JPG" }
       ) {
         childImageSharp {
-          fluid(
-            quality: 90
-            maxWidth: 1920
-            duotone: { highlight: "#3182CE", shadow: "#2C5282", opacity: 0 }
-          ) {
+          fluid(quality: 90, maxWidth: 1920) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      construction_2: file(
+        relativePath: { eq: "gallery/construction/IMG_1475.JPG" }
+      ) {
+        childImageSharp {
+          fluid(quality: 90, maxWidth: 1920) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      construction_3: file(
+        relativePath: { eq: "gallery/construction/IMG_1475.JPG" }
+      ) {
+        childImageSharp {
+          fluid(quality: 90, maxWidth: 1920) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+
+      interior_1: file(
+        relativePath: {
+          eq: "gallery/interior-remodel/December 26 2018 271.JPG"
+        }
+      ) {
+        childImageSharp {
+          fluid(quality: 90, maxWidth: 1920) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
@@ -36,77 +62,77 @@ export const Hero = () => {
   `)
 
   return (
-    <BackgroundImage
-      Tag="header"
+    // <BackgroundImage
+    //   Tag="header"
+    //   css={css`
+    //     grid-row: 1 / 3;
+    //     grid-column: 1 / -1;
+    //     width: 100%;
+    //     background-position: center;
+    //     background-repeat: repeat-y;
+    //     background-size: cover;
+    //     height: 40vh;
+    //   `}
+    //   fluid={imageData.blueprints.childImageSharp.fluid}
+    // >
+    <div
+      className="container"
       css={css`
-        grid-row: 1 / 3;
-        grid-column: 1 / -1;
-        width: 100%;
-        background-position: center;
-        background-repeat: repeat-y;
-        background-size: cover;
-        height: 40vh;
+        display: flex;
+        height: 100%;
+        align-content: center;
+        flex-wrap: wrap;
+        color: ${getColor(Color.Blue200)};
+        font-size: 2rem;
+        ${getBreakpoint(Breakpoint.Min600)} {
+          align-items: center;
+          justify-content: center;
+        }
       `}
-      fluid={imageData.blueprints.childImageSharp.fluid}
     >
-      <div
-        className="container"
+      <span
         css={css`
-          display: flex;
-          height: 100%;
-          align-content: center;
-          flex-wrap: wrap;
-          color: ${getColor(Color.Blue200)};
-          font-size: 2rem;
-          ${getBreakpoint(Breakpoint.Min600)} {
-            align-items: center;
-            justify-content: center;
-          }
+          margin-right: 0.4ch;
         `}
       >
-        <span
-          css={css`
-            margin-right: 0.4ch;
-          `}
-        >
-          Specializing in
-        </span>
-        <ul
-          css={css`
-            display: grid;
-          `}
-        >
-          {TAGS.map((tag, ix) => (
-            <li
-              key={tag}
+        Specializing in
+      </span>
+      <ul
+        css={css`
+          display: grid;
+        `}
+      >
+        {TAGS.map((tag, ix) => (
+          <li
+            key={tag}
+            css={css`
+              grid-column: 1 / -1;
+              grid-row: 1 / -1;
+            `}
+          >
+            <span
               css={css`
-                grid-column: 1 / -1;
-                grid-row: 1 / -1;
+                display: block;
+                color: ${getColor(Color.Blue100)};
+                font-weight: 400;
+                opacity: ${currentTagIndex === ix ? 1 : 0};
+                transform: translateY(
+                  ${currentTagIndex === ix
+                    ? "0%"
+                    : isPrev(ix)
+                    ? "-100%"
+                    : "100%"}
+                );
+                transition: 800ms all;
               `}
             >
-              <span
-                css={css`
-                  display: block;
-                  color: ${getColor(Color.Blue100)};
-                  font-weight: 400;
-                  opacity: ${currentTagIndex === ix ? 1 : 0};
-                  transform: translateY(
-                    ${currentTagIndex === ix
-                      ? "0%"
-                      : isPrev(ix)
-                      ? "-100%"
-                      : "100%"}
-                  );
-                  transition: 800ms all;
-                `}
-              >
-                {tag}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </BackgroundImage>
+              {tag}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+    // </BackgroundImage>
   )
 }
 
