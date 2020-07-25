@@ -78,6 +78,10 @@ export const SEO = ({
           name: `twitter:description`,
           content: metaDescription,
         },
+        {
+          name: "google-site-verification",
+          content: "RAruwwMR50V460HW6pAOvwwonyqdMeFGQIQaeSsTEB0",
+        },
       ].concat(meta)}
     />
   )
