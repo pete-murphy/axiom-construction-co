@@ -26,7 +26,10 @@ export const ContactForm = () => {
         email,
         town,
         state,
-        message,
+        // @TODO: Seems like this needs to have "description" as key, otherwise
+        // Netlify drops it (because it was originally called "description"
+        // when I registered it with Netlify 🤷‍♀️)
+        description: message,
       }),
     })
       .then(_ => {
@@ -89,7 +92,7 @@ export const ContactForm = () => {
           Message <em>(optional)</em>
         </span>
         <textarea
-          name="message"
+          name="description"
           value={message}
           onChange={handleChangeMessage}
         />

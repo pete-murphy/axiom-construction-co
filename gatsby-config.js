@@ -3,8 +3,10 @@ module.exports = {
     title: `Axiom Construction Company`,
     description: `Professional builders operating in New England`,
     author: `@axiomconstructionco`,
+    siteUrl: `https://www.axiomconstructionco.com/`,
   },
   plugins: [
+    `gatsby-plugin-sitemap`,
     `gatsby-plugin-typescript`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
