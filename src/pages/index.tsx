@@ -103,13 +103,13 @@ export default () => (
       >
         <h2>What our customers say about us</h2>
         <Testimonial>
-          <QuoteNameCard name="Bill F." town="Orleans, MA"></QuoteNameCard>
+          <QuoteNameCard name="Bill F." town="Orleans, MA" />
           <p>
             Tim was very responsive. I wish all contractors could work as well.
           </p>
         </Testimonial>
         <Testimonial>
-          <QuoteNameCard name="Jeanne M." town="Truro, MA"></QuoteNameCard>
+          <QuoteNameCard name="Jeanne M." town="Truro, MA" />
           <p>
             We are exceedingly happy with our installation. They are always
             responsive to our calls and have immediately trouble shooted several
@@ -118,7 +118,7 @@ export default () => (
           </p>
         </Testimonial>
         <Testimonial>
-          <QuoteNameCard name="Charles C." town="Quincy, MA"></QuoteNameCard>
+          <QuoteNameCard name="Charles C." town="Quincy, MA" />
           <p>
             I just want to again thank you for your fantastic service. Tim
             explained all of the costs and incentives and most importantly
@@ -127,7 +127,7 @@ export default () => (
           </p>
         </Testimonial>
         <Testimonial>
-          <QuoteNameCard name="Paul S." town="Eastham, MA"></QuoteNameCard>
+          <QuoteNameCard name="Paul S." town="Eastham, MA" />
           <p>
             The pricing was very competitive with bids we got from other
             vendors. We're happy to have been able to work with a firm that is

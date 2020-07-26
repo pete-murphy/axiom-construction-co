@@ -25,7 +25,7 @@ export const Hero = () => {
         </ImageContainer>
 
         <ImageContainer className="lg">
-          <ImageColumn offsetTop={8}>
+          <ImageColumn offsetTop={9}>
             {IMAGE_KEYS_1.map(img => (
               <StyledImg
                 key={img}
@@ -81,7 +81,7 @@ const HeroH2 = styled.h2`
   font-size: 3.5rem;
   letter-spacing: -0.04em;
   line-height: 1em;
-  margin-top: 1rem;
+  margin-top: 2rem;
 `
 
 const P = styled.p`
