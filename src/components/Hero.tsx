@@ -25,7 +25,7 @@ export const Hero = () => {
         </ImageContainer>
 
         <ImageContainer className="lg">
-          <ImageColumn offsetTop={9}>
+          <ImageColumn offsetTop={12}>
             {IMAGE_KEYS_1.map(img => (
               <StyledImg
                 key={img}
@@ -33,7 +33,7 @@ export const Hero = () => {
               />
             ))}
           </ImageColumn>
-          <ImageColumn offsetTop={0.5}>
+          <ImageColumn offsetTop={1}>
             {IMAGE_KEYS_2.map(img => (
               <StyledImg
                 key={img}
@@ -56,12 +56,13 @@ export const Hero = () => {
 }
 
 const HeroContainer = styled.div`
+  background: ${getColor(Color.Background)};
   display: grid;
   max-width: 100vw;
   overflow-x: hidden;
   overflow-y: visible;
   grid-template-columns: 1fr;
-  min-height: 60vh;
+  min-height: 40rem;
 
   width: 100%;
   max-width: var(--max-width);
@@ -144,7 +145,7 @@ const ImageColumn = styled.div<{ offsetTop: number }>`
 `
 
 const StyledImg = styled(Img)`
-  ${boxShadow(Color.Gray900, 50, 0.5, 0.75, 1.25)}
+  ${boxShadow(Color.Gray500, 50, 0.5, 0.75, 1.25)}
   border-radius: var(--border-radius);
 `
 
