@@ -15,8 +15,8 @@ export const Hero = () => {
       <HeroLeft>
         <HeroH2>New England&rsquo;s Premier Building Experts</HeroH2>
         <P>
-          Specializing in Sitework, Septic Systems, Design and Commercial &
-          Residential Construction
+          Specializing in Commercial & Residential Construction, Design,
+          Sitework, & Septic Systems
         </P>
       </HeroLeft>
       <HeroRight>
@@ -63,13 +63,12 @@ const HeroContainer = styled.div`
   overflow-y: visible;
   grid-template-columns: 1fr;
   min-height: 40rem;
-
   width: 100%;
   max-width: var(--max-width);
   margin: 2rem auto;
 
   ${getBreakpoint(Breakpoint.Min600)} {
-    width: 100%;
+    padding: 0 10% 3rem 0;
     max-width: 100vw;
     grid-template-columns:
       minmax(4rem, 1fr) 24rem 10rem 30rem
