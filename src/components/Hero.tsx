@@ -13,10 +13,10 @@ export const Hero = () => {
   return (
     <HeroContainer>
       <HeroLeft>
-        <HeroH2>New England&rsquo;s premier building experts</HeroH2>
+        <HeroH2>New England&rsquo;s Premier Building Experts</HeroH2>
         <P>
-          Specializing in design/build, sitework, solar installation, and
-          residential & commercial construction
+          Specializing in Sitework, Septic Systems, Design and Commercial &
+          Residential Construction
         </P>
       </HeroLeft>
       <HeroRight>
@@ -155,7 +155,7 @@ const IMAGE_KEYS_3 = ["siteWork", "interior"]
 const imageQuery = graphql`
   query {
     construction: file(
-      relativePath: { eq: "gallery/construction/IMG_1475.JPG" }
+      relativePath: { eq: "gallery/construction/nh-frame.jpg" }
     ) {
       childImageSharp {
         fluid(maxWidth: 400) {
