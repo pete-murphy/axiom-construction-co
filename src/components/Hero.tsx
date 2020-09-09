@@ -25,7 +25,7 @@ export const Hero = () => {
         </ImageContainer>
 
         <ImageContainer className="lg">
-          <ImageColumn offsetTop={12}>
+          <ImageColumn offsetTop={11}>
             {IMAGE_KEYS_1.map(img => (
               <StyledImg
                 key={img}
@@ -66,7 +66,7 @@ const HeroContainer = styled.div`
 
   width: 100%;
   max-width: var(--max-width);
-  margin: 0 auto;
+  margin: 2rem auto;
 
   ${getBreakpoint(Breakpoint.Min600)} {
     width: 100%;
@@ -119,7 +119,6 @@ const ImageContainer = styled.div`
     ${getBreakpoint(Breakpoint.Min600)} {
       display: inherit;
       position: relative;
-      transform: rotate(5deg);
       grid-column: 2 / -1;
 
       display: grid;
@@ -150,8 +149,8 @@ const StyledImg = styled(Img)`
 `
 
 const IMAGE_KEYS_1 = ["construction"]
-const IMAGE_KEYS_2 = ["siteWork", "construction2"]
-const IMAGE_KEYS_3 = ["solar", "interior"]
+const IMAGE_KEYS_2 = ["interior2", "construction2"]
+const IMAGE_KEYS_3 = ["siteWork", "interior"]
 
 const imageQuery = graphql`
   query {
@@ -185,9 +184,7 @@ const imageQuery = graphql`
       }
     }
 
-    siteWork: file(
-      relativePath: { eq: "gallery/site-septic/August 23 2019 054.JPG" }
-    ) {
+    siteWork: file(relativePath: { eq: "gallery/site-septic/tubes.JPG" }) {
       childImageSharp {
         fluid(maxWidth: 400) {
           ...GatsbyImageSharpFluid
@@ -195,7 +192,7 @@ const imageQuery = graphql`
       }
     }
 
-    solar: file(relativePath: { eq: "gallery/solar/IMG_4853.JPG" }) {
+    interior2: file(relativePath: { eq: "gallery/interior-remodel/bar.JPEG" }) {
       childImageSharp {
         fluid(maxWidth: 400) {
           ...GatsbyImageSharpFluid

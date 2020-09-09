@@ -41,16 +41,6 @@ export const Gallery = (props: Props) => {
           }
         }
       }
-
-      solar: allFile(filter: { relativeDirectory: { in: "gallery/solar" } }) {
-        nodes {
-          childImageSharp {
-            fluid(quality: 90, maxWidth: 960) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
-          }
-        }
-      }
     }
   `)
 
@@ -78,5 +68,4 @@ export enum GallerySection {
   Construction = "construction",
   InteriorRemodel = "interiorRemodel",
   SiteSeptic = "siteSeptic",
-  Solar = "solar",
 }

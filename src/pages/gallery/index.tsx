@@ -15,8 +15,6 @@ export default () => (
       <Gallery section={GallerySection.InteriorRemodel} />
       <h3>Site / Septic</h3>
       <Gallery section={GallerySection.SiteSeptic} />
-      <h3>Solar</h3>
-      <Gallery section={GallerySection.Solar} />
     </section>
   </Layout>
 )
